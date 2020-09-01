@@ -5,12 +5,19 @@ import { Container, CardDeck, Form, Button, FormControl } from 'react-bootstrap'
 const ColorSort = () => {
     const [color, setColor] = useState("");
 
-    let carArrey = JSON.parse(localStorage.getItem('items'));
-    let result = carArrey.filter((item) => item.color === { color });
+    if (localStorage.length > 0) {
+        let carArrey = JSON.parse(localStorage.getItem('items'));
+        console.log(carArrey);
+        //let result = carArrey.filter((item) => item.color === { color });
+
+    } else {
+
+    }
     const handleChenge = (event) => {
         let text = event.target.value;
         setColor(text);
     }
+
     return (
         <Container>
             <h2 className="text-centre">Car color</h2>

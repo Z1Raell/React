@@ -5,13 +5,13 @@ const Contacts = () => {
 
     const [carName, setCarName] = useState("");
     const [carManufacturer, setCarManufacturer] = useState("");
-    const [carYearOfIssue, setCarYearOfIssue] = useState();
-    const [carVolume, setCarVolume] = useState();
-    const [carPrice, setCarPrice] = useState();
-    const [carColor, setCarColor] = useState();
+    const [carYearOfIssue, setCarYearOfIssue] = useState(0);
+    const [carVolume, setCarVolume] = useState(0);
+    const [carPrice, setCarPrice] = useState(0);
+    const [carColor, setCarColor] = useState("");
     const [carReview, setCarReview] = useState("");
 
-    const carArrey = [];
+
     const car = {
         name: carName,
         manufacturer: carManufacturer,
@@ -51,13 +51,9 @@ const Contacts = () => {
         setCarReview(text);
     }
 
-
-
     const handleSubmit = (event) => {
-        console.log(carArrey)
+        localStorage.setItem("items",JSON.stringify(car))
         event.preventDefalt();
-        carArrey.push(car);
-        localStorage.setItem('items', JSON.stringify(carArrey));
     }
 
 
@@ -77,19 +73,19 @@ const Contacts = () => {
                         onChange={hadleCarManufacturerCheng} value={carManufacturer} />
                 </Form.Group>
                 <Form.Group controlId="formBasicCarYearOfIssue">
-                    <Form.Label>Car Year of issue</Form.Label>
-                    <Form.Control type="number" placeholder="Enter car Year of issue" required
-                        onInput={hadleCarYearOfIssueCheng} value={carYearOfIssue} />
+                    <Form.Label>Car YearOfIssue</Form.Label>
+                    <Form.Control type="number" placeholder="Enter car Year" required
+                        onChange={hadleCarYearOfIssueCheng} value={carYearOfIssue} />
                 </Form.Group>
                 <Form.Group controlId="formBasicCarVolume">
                     <Form.Label>Car volume</Form.Label>
                     <Form.Control type="number" placeholder="Enter car volume" required
-                        onInput={hadleCarVolumeCheng} value={carVolume} />
+                        onChange={hadleCarVolumeCheng} value={carVolume} />
                 </Form.Group>
                 <Form.Group controlId="formBasicCarPrice">
                     <Form.Label>Car Price</Form.Label>
                     <Form.Control type="number" placeholder="Enter car Price" required
-                        onInput={hadleCarPriceCheng} value={carPrice} />
+                        onChange={hadleCarPriceCheng} value={carPrice} />
                 </Form.Group>
                 <Form.Group controlId="formBasicCarColor">
                     <Form.Label>Car Color</Form.Label>
